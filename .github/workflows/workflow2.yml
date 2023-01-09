@@ -5,5 +5,5 @@ jobs:
     name: Log event details
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Log Step
         run: echo '${{ toJSON(github) }}'
