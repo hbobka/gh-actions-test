@@ -1,0 +1,9 @@
+name: Workflow 2
+on: issues
+jobs:
+  lint:
+    name: Log event details
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        run: echo '${{ toJSON(github) }}'
