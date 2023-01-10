@@ -1,8 +1,8 @@
 name: Workflow 1
 on: push
 jobs:
-  lint:
-    name: Lint Test Build
+  lint-test-build-artifact:
+    name: Lint Test Build Artifact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,8 +17,20 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build
-      - name: Create Artifact
+      - name: Artifact
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact-files
           path: dist
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dwonload Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact-files
+      - name: Log Artifact Content
+        run: ls
+      - name: Deploy to host
+        run: echo "deploying..."
