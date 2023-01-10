@@ -24,6 +24,7 @@ jobs:
           path: dist
   deploy:
     name: Deploy
+    needs: lint-test-build-artifact
     runs-on: ubuntu-latest
     steps:
       - name: Dwonload Build Artifact
