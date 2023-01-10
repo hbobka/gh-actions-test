@@ -17,3 +17,8 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build
+      - name: Create Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact-files
+          path: dist
